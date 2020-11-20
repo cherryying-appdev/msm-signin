@@ -1,15 +1,13 @@
 # == Schema Information
 #
-# Table name: characters
+# Table name: bookmarks
 #
 #  id         :integer          not null, primary key
-#  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  actor_id   :integer
 #  movie_id   :integer
+#  user_id    :integer
 #
-class Character < ApplicationRecord
-  belongs_to(:actor)
+class Bookmark < ApplicationRecord
   belongs_to(:movie)
 end

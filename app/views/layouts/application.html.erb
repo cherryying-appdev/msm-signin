@@ -15,49 +15,73 @@
   </head>
 
   <body>
-  
-    <p>
-      <%= session[:user_id].inspect%>
-    </p>
-    <% if @current_user == nil %>
-      <li>
-        <a href="/user_sign_in">
-          Sign in
-        </a>
-      </li>
-      <li>
-        <a href="/user_sign_up">
-          Sign up
-        </a>
-      </li>
+    <ul>
+    <%# <p> %>
+      <%#= session[:user_id].inspect %>
+    <%# </p> %>
+      <% if @current_user == nil %>
+        <li>
+          <a href="/user_sign_in">
+            Sign in
+          </a>
+        </li>
+        <li>
+          <a href="/user_sign_up">
+            Sign up
+          </a>
+        </li>
 
-    <% else %>
-      <%# <% matching_users = User.where({ :id = session[:user_id] }) %> %>
-      <%# <% the_user = matching_users.first %> %>
+      <% else %>
+        <%# matching_users = User.where({ :id = session[:user_id] }) %>
+        <%# the_user = matching_users.first %>
+        <li>
+          <a href="/edit_user_profile">
+            Edit <%= @current_user.first_name %>
+          </a>
+        </li>
+        <li>
+          <a href="user_sign_out">
+            Sign out
+          </a>
+        </li>
+        <li>
+          <a href="bookmarks">
+            My bookmarks
+          </a>
+        </li>
+      <% end %>
+
       <li>
-        <a href="/edit_user_profile">
-          Edit <%= @current_user.first_name %>
+        <a href="/movies">
+          Movies
         </a>
       </li>
       <li>
-        <a href="user_sign_out">
-          Sign out
+        <a href="/actors">
+          Actors
         </a>
       </li>
       <li>
-        <a href="bookmarks">
-          My bookmarks
+        <a href="/directors">
+          Directors
         </a>
       </li>
-    <% end %>
+      <li>
+        <a href="/characters">
+          Characters
+        </a>
+      </li>
+    </ul>
 
 
     <p style="color: green">
       <%= notice %>
     </p>
+    
     <p style="color: red">
       <%= alert %>
     </p>
+
     <%= yield %>
   </body>
 </html>

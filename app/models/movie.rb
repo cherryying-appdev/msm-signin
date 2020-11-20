@@ -14,7 +14,7 @@
 #
 class Movie < ApplicationRecord
   has_many(:characters)
-  has_many(:actors, :through => :characters, :source => :actors)
+  has_many(:cast, :through => :characters, :source => :actor)
   validates(:title, { :uniqueness => { :scope => ["year", "director_id"] } })
   validates(:title, { :presence => true })
 end
